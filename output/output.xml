@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.3 on linux)" generated="20191213 09:57:40.223" rpa="false">
+<suite id="s1" name="Tests" source="/tests">
+<suite id="s1-s1" name="Api" source="/tests/api">
+<suite id="s1-s1-s1" name="Api Tests" source="/tests/api/api_tests.robot">
+<test id="s1-s1-s1-t1" name="Is Service Healthy">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>app</arg>
+<arg>${APP_URL}</arg>
+</arguments>
+<msg timestamp="20191213 09:57:40.844" level="INFO">Creating Session using : alias=app, url=http://172.17.0.1:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20191213 09:57:40.843" endtime="20191213 09:57:40.844"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>app</arg>
+<arg>/healthy</arg>
+</arguments>
+<assign>
+<var>${RESPONSE}</var>
+</assign>
+<msg timestamp="20191213 09:57:40.845" level="INFO">GET Request using : uri=/healthy, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+data=None 
+json=None</msg>
+<msg timestamp="20191213 09:57:40.855" level="INFO">${RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20191213 09:57:40.845" endtime="20191213 09:57:40.855"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${RESPONSE}</arg>
+</arguments>
+<status status="PASS" starttime="20191213 09:57:40.856" endtime="20191213 09:57:40.857"></status>
+</kw>
+<status status="PASS" starttime="20191213 09:57:40.842" endtime="20191213 09:57:40.857" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20191213 09:57:40.262" endtime="20191213 09:57:40.859"></status>
+</suite>
+<status status="PASS" starttime="20191213 09:57:40.258" endtime="20191213 09:57:40.863"></status>
+</suite>
+<suite id="s1-s2" name="Create User" source="/tests/create_user">
+<suite id="s1-s2-s1" name="Create User" source="/tests/create_user/create_user.robot">
+<test id="s1-s2-s1-t1" name="User creation passes">
+<kw name="Fail" library="BuiltIn">
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<arguments>
+<arg>Not Implemented</arg>
+</arguments>
+<msg timestamp="20191213 09:57:40.883" level="FAIL">Not Implemented</msg>
+<status status="FAIL" starttime="20191213 09:57:40.882" endtime="20191213 09:57:40.883"></status>
+</kw>
+<status status="FAIL" starttime="20191213 09:57:40.881" endtime="20191213 09:57:40.883" critical="yes">Not Implemented</status>
+</test>
+<status status="FAIL" starttime="20191213 09:57:40.871" endtime="20191213 09:57:40.887"></status>
+</suite>
+<status status="FAIL" starttime="20191213 09:57:40.865" endtime="20191213 09:57:40.891"></status>
+</suite>
+<status status="FAIL" starttime="20191213 09:57:40.225" endtime="20191213 09:57:40.895"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1">Critical Tests</stat>
+<stat pass="1" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="1" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Api">Tests.Api</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="Api Tests">Tests.Api.Api Tests</stat>
+<stat pass="0" fail="1" id="s1-s2" name="Create User">Tests.Create User</stat>
+<stat pass="0" fail="1" id="s1-s2-s1" name="Create User">Tests.Create User.Create User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
